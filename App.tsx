@@ -1,22 +1,54 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  Text,
-} from 'react-native';
+import { ScrollView, StatusBar, StyleSheet, Text, View, useColorScheme } from 'react-native';
 
 import { ApolloProvider } from '@apollo/client';
 
-import client from "./api/apollo-client";
+import client from './api/apollo-client';
+import { AppColours, lightColours } from './styles/colours';
 
 const App = () => {
+  const styles = appStyles(useColorScheme() === "light"?  lightColours : lightColours);
 
   return (
     <ApolloProvider client={client}>
-      <SafeAreaView>
-        <Text>Hello World</Text>
-      </SafeAreaView>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.rootView}>
+          <Text style={styles.text}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </Text>
+        </View>
+      </ScrollView>
     </ApolloProvider>
   );
 };
+
+const appStyles = (colours: AppColours) => StyleSheet.create({
+  scrollView: {
+    flexGrow: 1,
+    backgroundColor: colours.primary.lighter,
+  },
+  rootView: {
+    margin: (StatusBar.currentHeight || 50) / 2,
+    padding: (StatusBar.currentHeight || 50) / 2,
+    backgroundColor:  colours.primary.main
+  },
+  text: {
+    fontSize: 32,
+    color: colours.text.main,
+  },
+});
 
 export default App;
