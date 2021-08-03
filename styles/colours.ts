@@ -29,3 +29,21 @@ export const lightColours: AppColours = {
         darker: "#0081A7",
     },
 }
+
+export const darkColours: AppColours = {
+    text: {
+        lighter: "lightgray",
+        main: "#333333",
+        darker: "black",
+    },
+    primary: {
+        lighter: "#FDFCDC",
+        main: "#FED9B7",
+        darker: "#F07167",
+    },
+    secondary: {
+        lighter: "lightgray",
+        main: "#00AFB9",
+        darker: "#0081A7",
+    },
+}

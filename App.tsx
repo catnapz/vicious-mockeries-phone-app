@@ -1,36 +1,20 @@
 import React from 'react';
-import { ScrollView, StatusBar, StyleSheet, Text, View, useColorScheme } from 'react-native';
-
+import { ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { ApolloProvider } from '@apollo/client';
-
 import client from './api/apollo-client';
-import { AppColours, lightColours } from './styles/colours';
+import { AppColours, useColours } from './styles';
+import { MockeryCard } from './components';
 
 const App = () => {
-  const styles = appStyles(useColorScheme() === "light"?  lightColours : lightColours);
+  const styles = appStyles(useColours());
 
   return (
     <ApolloProvider client={client}>
+      <View><Text style={{ textAlign: "center", color: "pink" }}>Header</Text></View>
       <ScrollView style={styles.scrollView}>
-        <View style={styles.rootView}>
-          <Text style={styles.text}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </Text>
-        </View>
+        <MockeryCard />
       </ScrollView>
+      <View><Text style={{ textAlign: "center", color: "pink" }}>Footer</Text></View>
     </ApolloProvider>
   );
 };
@@ -39,16 +23,9 @@ const appStyles = (colours: AppColours) => StyleSheet.create({
   scrollView: {
     flexGrow: 1,
     backgroundColor: colours.primary.lighter,
-  },
-  rootView: {
-    margin: (StatusBar.currentHeight || 50) / 2,
-    padding: (StatusBar.currentHeight || 50) / 2,
-    backgroundColor:  colours.primary.main
-  },
-  text: {
-    fontSize: 32,
-    color: colours.text.main,
-  },
+  }
 });
 
 export default App;
+
+
