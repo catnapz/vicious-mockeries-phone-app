@@ -32,18 +32,18 @@ export const lightColours: AppColours = {
 
 export const darkColours: AppColours = {
     text: {
-        lighter: "lightgray",
-        main: "#333333",
-        darker: "black",
+        lighter: "white",
+        main: "whitesmoke",
+        darker: "lightgray",
     },
     primary: {
-        lighter: "#FDFCDC",
-        main: "#FED9B7",
-        darker: "#F07167",
+        lighter: "black",
+        main: "#333",
+        darker: "black",
     },
     secondary: {
-        lighter: "lightgray",
-        main: "#00AFB9",
-        darker: "#0081A7",
+        lighter: "whitesmoke",
+        main: "white",
+        darker: "#111",
     },
 }

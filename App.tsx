@@ -13,6 +13,8 @@ const App = () => {
       <View><Text style={{ textAlign: "center", color: "pink" }}>Header</Text></View>
       <ScrollView style={styles.scrollView}>
         <MockeryCard />
+        <MockeryCard />
+        <MockeryCard />
       </ScrollView>
       <View><Text style={{ textAlign: "center", color: "pink" }}>Footer</Text></View>
     </ApolloProvider>
