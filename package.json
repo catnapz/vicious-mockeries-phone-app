@@ -14,7 +14,8 @@
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "graphql": "^15.5.1",
     "react": "17.0.1",
-    "react-native": "0.64.1"
+    "react-native": "0.64.1",
+    "react-native-collapsible": "^1.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

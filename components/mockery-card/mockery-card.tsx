@@ -1,39 +1,48 @@
 import React from 'react';
 import {
-  Alert,
   Pressable,
   StatusBar,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import {AppColours, raisedEffect, useColours} from '../../styles';
-import {TagsContainer} from './tags-container';
+import Collapsible from 'react-native-collapsible';
+import { AppColours, raisedEffect, useColours } from '../../styles';
+import { TagsContainer } from './tags-container';
 
-export const MockeryCard = () => {
+interface IMockeryCardProps {
+  cardId: number;
+  isExpanded: boolean;
+  onPressed: (cardId: number) => void;
+}
+
+export const MockeryCard = (props: IMockeryCardProps) => {
   const colours = useColours();
   const styles = cardStyles(colours);
 
-  const onPressedIn = () => {};
-
-  const onPressed = () => {};
-
   return (
     <Pressable
-      android_ripple={{borderless: true, color: colours.secondary.main}}
-      onPressIn={onPressedIn}
-      onPress={onPressed}>
+      android_ripple={{ borderless: true, color: colours.secondary.main }}
+      onPress={() => props.onPressed(props.cardId)}>
       <View style={styles.card}>
-        <View>
-          <Text style={{color: 'black'}}>Categories: Yo Mama, General</Text>
-        </View>
+
+        <Collapsible collapsed={!props.isExpanded}  align="top">
+          <View>
+            <Text style={{ color: 'black' }}>Categories: Yo Mama, General</Text>
+          </View>
+        </Collapsible>
+
         <View>
           <Text style={styles.text}>Your Mom!</Text>
         </View>
-        <TagsContainer />
-        <View>
-          <Text style={{color: 'black'}}>Source: Ansh's Brain</Text>
-        </View>
+
+        <Collapsible collapsed={!props.isExpanded} align="bottom">
+            <TagsContainer />
+            <View>
+              <Text style={{ color: 'black' }}>Source: Ansh's Brain</Text>
+            </View>
+        </Collapsible>
+
       </View>
     </Pressable>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -15,6 +15,8 @@ const App = () => {
   const styles = appStyles(useColours());
   const isDarkMode = useColorScheme() === 'dark';
 
+  const [expandedCardId, setExpandedCardId] = useState<number>();
+
   return (
     <ApolloProvider client={client}>
       <View>
@@ -24,7 +26,8 @@ const App = () => {
         style={styles.scrollView}
         indicatorStyle={isDarkMode ? 'white' : 'black'}
       >
-        <MockeryCard />
+        <MockeryCard cardId={1} isExpanded={expandedCardId === 1} onPressed={(cardId: number) => setExpandedCardId(cardId)}/>
+        <MockeryCard cardId={2} isExpanded={expandedCardId === 2} onPressed={(cardId: number) => setExpandedCardId(cardId)}/>
       </ScrollView>
       <View>
         <Text style={{ textAlign: 'center', color: 'pink' }}>Footer</Text>
