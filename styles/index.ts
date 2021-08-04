@@ -1,3 +1,3 @@
-export * from "./colours";
-export * from "./common"
-export * from "./use-colours";
+export * from './colours';
+export * from './common';
+export * from './use-colours';
